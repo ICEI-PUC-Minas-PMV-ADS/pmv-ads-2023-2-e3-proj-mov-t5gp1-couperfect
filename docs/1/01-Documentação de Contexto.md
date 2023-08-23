@@ -1,6 +1,6 @@
 # Introdução
 
-Texto descritivo com a visão geral do projeto abordado. Inclui o contexto, o problema, os objetivos, a justificativa e o público-alvo do projeto.
+Coup é um jogo de cartas sofisticado que combina estratégia, blefe e intriga, projetado para 2 a 6 jogadores. O projeto “CouPerfect” tem como objetivo virtualizar este jogo de cartas em uma aplicação móvel que permite a interação de jogadores em partidas multiplayer baseadas em turnos, desafiando amigos ou jogadores aleatórios. Como o jogo original é jogável apenas com cartas físicas, a quantidade de jogadores pode ficar limitada à quantidade de cartas disponíveis e é necessário jogar presencialmente. CouPerfect visa facilitar a jogatina de pessoas à distância e sem limites de jogadores, proporcionando uma experiência divertida e agradável.
 
 ## Problema
 Nesse momento você deve apresentar o problema que a sua aplicação deve  resolver. No entanto, não é a hora de comentar sobre a aplicação.
