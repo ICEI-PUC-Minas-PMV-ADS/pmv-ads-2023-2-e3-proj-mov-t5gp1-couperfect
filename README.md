@@ -1,23 +1,24 @@
-# TÍTULO DO PROJETO
+# Couperfect
 
-`CURSO`
+`Análise e desenvolvimento de sistemas`
 
-`DISCIPLINA`
+`Eixo 3 - Projeto: Desenvolvimento de uma Aplicação Móvel em um Ambiente de Negócio`
 
-`SEMESTRE`
+`2023/2`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+O projeto em desenvolvimento é uma versão online do popular jogo de cartas estratégico "Coup". Inspirado no jogo de tabuleiro, esta adaptação digital oferece aos jogadores uma experiência envolvente de blefe e intriga. Os jogadores podem participar de partidas multiplayer em tempo real ou baseadas em turnos, desafiando amigos ou jogadores aleatórios. Com uma interface intuitiva, o jogo permite que os jogadores realizem ações como trocar cartas, realizar golpes políticos e desafiar as ações dos outros jogadores. Com regras fielmente adaptadas, uma estética atraente e a emoção característica do Coup, este projeto busca trazer a diversão estratégica do jogo de cartas para o ambiente online.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Adeilton Farias Rodrigues Junior
+* Carlos Alberto Mendonça Vasconselos
+* Gustavo Henrique de Jesus Almeida
+* Luiz Eduardo de Jesus Santana
+* Pedro Rafael da Cruz Almeida
 
 ## Orientador
 
-* Nome completo do professor 1
+* Mateus Curcino de Lima
 
 ## Instruções de utilização
 
