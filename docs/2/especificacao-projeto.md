@@ -1,10 +1,11 @@
 # Especificações do Projeto
 
-<span style="color:red">Pré-requisitos: <a href="1-Documentação de Contexto.md"> Documentação de Contexto</a></span>
+A definição exata do problema e outros pontos relevantes a serem tratados no projeto estão descritos aqui. Eles foram levantados e produzidos usando as seguintes ferramentas e tecnicas: 
 
-Definição do problema e ideia de solução a partir da perspectiva do usuário. É composta pela definição do  diagrama de personas, histórias de usuários, requisitos funcionais e não funcionais além das restrições do projeto.
-
-Apresente uma visão geral do que será abordado nesta parte do documento, enumerando as técnicas e/ou ferramentas utilizadas para realizar a especificações do projeto
+1. Entrevistas e Discussões com jogadores e desenvolvedores
+2. Documentação de Requisito
+3. Ferramentas de Modelagem Visual (draw.io)
+4. Ferramentas de Gerenciamento de Projetos (Github Projects)
 
 ## Personas
 
@@ -56,19 +57,14 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 Com base na análise das personas forma identificadas as seguintes histórias de usuários:
 
-|EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
-|--------------------|------------------------------------|----------------------------------------|
-|Usuário do sistema  | Registrar minhas tarefas           | Não esquecer de fazê-las               |
-|Administrador       | Alterar permissões                 | Permitir que possam administrar contas |
+<!-- Tabela gerada apartir do arquivo: ./historias-usuario.tgn -->
 
-Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
-
-> **Links Úteis**:
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
-> - [User Stories: requisitos que humanos entendem](https://www.luiztools.com.br/post/user-stories-descricao-de-requisitos-que-humanos-entendem/)
-> - [Histórias de Usuários: mais exemplos](https://www.reqview.com/doc/user-stories-example.html)
-> - [9 Common User Story Mistakes](https://airfocus.com/blog/user-story-mistakes/)
+| EU COMO... `PERSONA` 	| QUERO/PRECISO ... `FUNCIONALIDADE`                        	| PARA ... `MOTIVO/VALOR`                                    	|
+|----------------------	|-----------------------------------------------------------	|------------------------------------------------------------	|
+| Lara Rocha Pinto     	| Criar e compartilhar sessões de Coup                      	| Jogar com seus fãs e produzir conteudo                     	|
+| Paulo André da Silva 	| Ver as ações e decisões de outros jogadores em tempo real 	| Conseguir montar estratégias para ganhar                   	|
+| Lara Rocha Pinto     	| Interagir no jogo através de uma interface intuitiva      	| Não precisar explicar tanto o jogo para pessoas assistindo 	|
+| Lara Rocha Pinto     	| Configurar regras para as sessões de Coup                 	| Ter maior controle sobre as partidas                       	|
 
 ## Modelagem do Processo de Negócio 
 
@@ -107,32 +103,24 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 ### Requisitos Funcionais
 
-|ID    | Descrição do Requisito  | Prioridade |
-|------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+<!-- Tabela gerada apartir do arquivo: ./requisitos-funcionais.tgn -->
+
+| ID   	| Descrição do Requisito                                                                                                  	| Prioridade 	|
+|------	|-------------------------------------------------------------------------------------------------------------------------	|------------	|
+| RF-1 	| Os jogadores devem ser capazes de criar salas de partida online                                                         	| ALTA       	|
+| RF-2 	| Os jogadores devem poder escolher o nome da sala, o número máximo de jogadores e as regras da partida ao criar uma sala 	| ALTA       	|
+| RF-3 	| A partida deve seguir o fluxo de jogo esperado, com turnos, condições de vitoria e derrota                              	| ALTA       	|
 
 ### Requisitos não Funcionais
 
-|ID     | Descrição do Requisito  |Prioridade |
-|-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA | 
+<!-- Tabela gerada apartir do arquivo: ./requisitos-funcionais.tgn -->
 
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
-
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
+| ID    	| Descrição do Requisito                                                                   	| Prioridade 	|
+|-------	|------------------------------------------------------------------------------------------	|------------	|
+| RNF-1 	| O jogo deve estar disponivel para dispositivos móveis                                    	| ALTA       	|
+| RNF-2 	| A interface precisa expressar as regras do jogo de maneira intuitiva e facil de aprender 	| ALTA       	|
+| RNF-3 	| As informações relevantes dos jogadores precisam estar protegidas de acessos indevidos   	| ALTA       	|
+| RNF-4 	| O codigo precisa ser criado para facilitar manuntenção e extensão futura                 	| MEDIA      	|
 
 ## Restrições
 
@@ -141,13 +129,6 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
 |01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
-
-Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
-
-> **Links Úteis**:
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
 
 ## Diagrama de Casos de Uso
 
