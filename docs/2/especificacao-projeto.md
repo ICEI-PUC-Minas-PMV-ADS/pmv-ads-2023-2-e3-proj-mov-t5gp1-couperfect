@@ -8,19 +8,49 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 ## Personas
 
-Pedro Paulo tem 26 anos, é arquiteto recém-formado e autônomo. Pensa em se desenvolver profissionalmente através de um mestrado fora do país, pois adora viajar, é solteiro e sempre quis fazer um intercâmbio. Está buscando uma agência que o ajude a encontrar universidades na Europa que aceitem alunos estrangeiros.
+<!-- Tabela gerada apartir do arquivo: ./persona1.tgn -->
 
-Enumere e detalhe as personas da sua solução. Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina e/ou nos seguintes links:
+<table>
+<thead>
+  <tr>
+    <th rowspan="2"><img src="./persona1.jpg" width="272" height="275"></th>
+    <th colspan="2">Paulo André da Silva</th>
+  </tr>
+  <tr>
+    <th>● Idade: 22 anos.<br>● Ocupação: Estudante de faculdade.</th>
+    <th>● Joga com os amigos no final do horário da faculdade.</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Motivação:<br>&emsp;● Jogar com os amigos.<br>&emsp;● Conhecer pessoas que támbem gostam de jogos de dedução social.</td>
+    <td>Objetivo:<br>&emsp;● Conseguir jogar com os amigos mesmo fora da faculdade.</td>
+    <td>Frustração:<br>&emsp;● Não conseguir se encontrar com os amigos após as aulas.<br>&emsp;● Só poder jogar no máximo com 6 pessoas.</td>
+  </tr>
+</tbody>
+</table>
 
-> **Links Úteis**:
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Hotmart](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [Mapa de Empatia](https://resultadosdigitais.com.br/blog/mapa-da-empatia/)
-> - [Mapa de Stalkeholders](https://www.racecomunicacao.com.br/blog/como-fazer-o-mapeamento-de-stakeholders/)
->
-Lembre-se que você deve ser enumerar e descrever precisamente e personalizada todos os clientes ideais que sua solução almeja.
+<!-- Tabela gerada apartir do arquivo: ./persona2.tgn -->
+
+<table>
+<thead>
+  <tr>
+    <th rowspan="2"><img src="./persona2.jpg" width="272" height="275"></th>
+    <th colspan="2">Lara Rocha Pinto</th>
+  </tr>
+  <tr>
+    <th>● Idade: 18 anos.<br>● Ocupação: Influenciadora digital.</th>
+    <th>● Faz lives jogando com seus seguidores.</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Motivação:<br>     ● Divertir-se jogando seu jogo favorito.</td>
+    <td>Objetivo:<br>     ● Jogar com os fãs.</td>
+    <td>Frustração:<br>     ● jogo de cartas favorito ainda não foi virtualizado.</td>
+  </tr>
+</tbody>
+</table>
 
 ## Histórias de Usuários
 
