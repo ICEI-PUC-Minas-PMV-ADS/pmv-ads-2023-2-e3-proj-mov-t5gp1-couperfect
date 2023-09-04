@@ -1,9 +1,6 @@
-
 # Metodologia
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a></span>
-
-Descreva aqui a metodologia de trabalho do grupo para atacar o problema. Definições sobre os ambiente de trabalho utilizados pela  equipe para desenvolver o projeto. Abrange a relação de ambientes utilizados, a estrutura para gestão do código fonte, além da definição do processo e ferramenta através dos quais a equipe se organiza (Gestão de Times).
+O desenvolvimento do software será realizado na plataforma GitHub. Nela, serão registradas as tarefas (issues) para cada requisito ou bug encontrado na aplicação. Para cada tarefa, será criada uma branch do código, que passará pelo processo de avaliação em um Pull Request (PR). Isso permitirá avaliar a qualidade do código e discutir se a solução proposta realmente atende ao requisito que a tarefa busca resolver. Dessa forma, é garantido um processo de desenvolvimento colaborativo e transparente.
 
 ## Relação de Ambientes de Trabalho
 
