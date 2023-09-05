@@ -15,28 +15,19 @@ foi utilizado para hospedagem do repositório.
 
 O projeto segue a seguinte convenção para o nome de branches:
 
-- `main`: versão estável já testada do software
-- `unstable`: versão já testada do software, porém instável
-- `testing`: versão em testes do software
-- `dev`: versão de desenvolvimento do software
+- `main` : mais recente versão estável e testada do software.
+- `dev` : mais recente versão estável e com recursos completos mais recente.
+- `feat/(nome do issue)` : versão instável para trabalho numa feature, deve ser mergeada na dev após teste, via Pull Request.
+- `work/(nome do issue)/(nome do desenvolvedor)` : versão instável para trabalho numa feature por um desenvolvedor em especifico, deve ser mergeada na feat/(nome da isssue) após teste, via Pull Request.
+- `release/(etapa 1, etapa 2, .., etapa 6)` : copia da versão mais recente da main no momento da entrega da etapa.
 
 Quanto à gerência de issues, o projeto adota a seguinte convenção para
 etiquetas:
 
-- `documentation`: melhorias ou acréscimos à documentação
-- `bug`: uma funcionalidade encontra-se com problemas
-- `enhancement`: uma funcionalidade precisa ser melhorada
-- `feature`: uma nova funcionalidade precisa ser introduzida
-
-Discuta como a configuração do projeto foi feita na ferramenta de versionamento escolhida. Exponha como a gerência de tags, merges, commits e branchs é realizada. Discuta como a gerência de issues foi realizada.
-
-> **Links Úteis**:
-> - [Microfundamento: Gerência de Configuração](https://pucminas.instructure.com/courses/87878/)
-> - [Tutorial GitHub](https://guides.github.com/activities/hello-world/)
-> - [Git e Github](https://www.youtube.com/playlist?list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA)
->  - [Comparando fluxos de trabalho](https://www.atlassian.com/br/git/tutorials/comparing-workflows)
-> - [Understanding the GitHub flow](https://guides.github.com/introduction/flow/)
-> - [The gitflow workflow - in less than 5 mins](https://www.youtube.com/watch?v=1SXpE08hvGs)
+- `doc`: Criar, melhorar ou corrigir documentação
+- `bug`: Correção de erro ou falha
+- `feat`: Novas features ou melhorias
+- `question` : Duvida, levantamento ou descoberta
 
 ## Gerenciamento de Projeto
 
