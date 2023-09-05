@@ -47,6 +47,8 @@ etiquetas:
 
 Para a divisão de tarefas em projetos de desenvolvimento de software, é utilizado as "issues" do Github, já que esse recurso se integra facilmente ao fluxo de trabalho do Git que é seguido pela aplicação. Cada issue criada no Github é associada a uma branch específica, o que possibilita que, ao mesclar (merge) essa branch em outra, a issue seja concluída automaticamente. Essa abordagem simplifica e agiliza o processo de gerenciamento de tarefas e facilita a colaboração entre membros da equipe.
 
+![Tela do github com issues](issues_print.png)
+
 ### Ferramentas
 
 As ferramentas empregadas no projeto são:
