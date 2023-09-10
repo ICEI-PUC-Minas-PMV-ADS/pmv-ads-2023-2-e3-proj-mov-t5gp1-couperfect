@@ -135,21 +135,13 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 # Matriz de Rastreabilidade
 
-<!-- Tabela gerada apartir do arquivo: ./matriz-rastreabilidade.tgn -->
-
-| ID    	| HU-1 	| HU-2 	| HU-3 	| HU-4 	| RF-1 	| RF-2 	| RF-3 	| RNF-1 	| RNF-2 	| RNF-3 	| RNF-4 	|
-|-------	|------	|------	|------	|------	|------	|------	|------	|-------	|-------	|-------	|-------	|
-| HU-1  	|      	| X    	|      	|      	| X    	| X    	| X    	| X     	|       	|       	|       	|
-| HU-2  	|      	|      	| X    	|      	|      	|      	|      	|       	|       	|       	|       	|
-| HU-3  	| X    	|      	|      	| X    	|      	|      	|      	|       	|       	|       	|       	|
-| HU-4  	| X    	|      	|      	| X    	|      	|      	|      	|       	|       	|       	|       	|
-| RF-1  	| X    	|      	|      	|      	| X    	| X    	| X    	| X     	|       	|       	|       	|
-| RF-2  	| X    	|      	|      	| X    	| X    	| X    	| X    	| X     	|       	|       	|       	|
-| RF-3  	| X    	|      	|      	|      	| X    	| X    	| X    	| X     	|       	|       	|       	|
-| RNF-1 	|      	|      	|      	|      	| X    	|      	|      	|       	|       	|       	|       	|
-| RNF-2 	|      	|      	|      	|      	| X    	|      	|      	|       	|       	|       	|       	|
-| RNF-3 	|      	|      	|      	|      	|      	| X    	|      	|       	|       	|       	|       	|
-| RNF-4 	|      	|      	|      	|      	|      	|      	| X    	|       	|       	|       	|       	|
+| Requisito     | Historias de usuario  |
+|---------------|-----------------------|
+| RF-1          | HU-01                 |
+| RF-2          | HU-04                 |
+| RF-3          |                       |
+| RNF-1         | HU-01, HU-03          |
+| RNF-2         | HU-03                 |
 
 # Gerenciamento de Projeto
 
