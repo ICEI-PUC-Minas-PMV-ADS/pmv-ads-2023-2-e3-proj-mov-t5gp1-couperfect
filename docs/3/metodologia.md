@@ -2,11 +2,6 @@
 
 O desenvolvimento do software será realizado na plataforma GitHub. Nela, serão registradas as tarefas (issues) para cada requisito ou bug encontrado na aplicação. Para cada tarefa, será criada uma branch do código, que passará pelo processo de avaliação em um Pull Request (PR). Isso permitirá avaliar a qualidade do código e discutir se a solução proposta realmente atende ao requisito que a tarefa busca resolver. Dessa forma, é garantido um processo de desenvolvimento colaborativo e transparente.
 
-## Relação de Ambientes de Trabalho
-
-Os artefatos do projeto são desenvolvidos a partir de diversas plataformas e a relação dos ambientes com seu respectivo propósito deverá ser apresentada em uma tabela que especifica que detalha Ambiente, Plataforma e Link de Acesso. 
-Nota: Vide documento modelo do estudo de caso "Portal de Notícias" e defina também os ambientes e frameworks que serão utilizados no desenvolvimento de aplicações móveis.
-
 ## Controle de Versão
 
 A ferramenta de controle de versão adotada no projeto foi o
