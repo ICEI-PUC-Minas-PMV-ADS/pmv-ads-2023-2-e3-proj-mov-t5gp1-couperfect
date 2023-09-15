@@ -59,12 +59,12 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 
 <!-- Tabela gerada apartir do arquivo: ./historias-usuario.tgn -->
 
-| EU COMO... `PERSONA` 	| QUERO/PRECISO ... `FUNCIONALIDADE`                        	| PARA ... `MOTIVO/VALOR`                                    	|
-|----------------------	|-----------------------------------------------------------	|------------------------------------------------------------	|
-| Lara Rocha Pinto     	| Criar e compartilhar sessões de Coup                      	| Jogar com seus fãs e produzir conteudo                     	|
-| Paulo André da Silva 	| Ver as ações e decisões de outros jogadores em tempo real 	| Conseguir montar estratégias para ganhar                   	|
-| Lara Rocha Pinto     	| Interagir no jogo através de uma interface intuitiva      	| Não precisar explicar tanto o jogo para pessoas assistindo 	|
-| Lara Rocha Pinto     	| Configurar regras para as sessões de Coup                 	| Ter maior controle sobre as partidas                       	|
+| ID   	| Persona              	| Funcionalidade                                            	| Motivo/Valor                                               	|
+|------	|----------------------	|-----------------------------------------------------------	|------------------------------------------------------------	|
+| HU-1 	| Lara Rocha Pinto     	| Criar e compartilhar sessões de Coup                      	| Jogar com seus fãs e produzir conteudo                     	|
+| HU-2 	| Paulo André da Silva 	| Ver as ações e decisões de outros jogadores em tempo real 	| Conseguir montar estratégias para ganhar                   	|
+| HU-3 	| Lara Rocha Pinto     	| Interagir no jogo através de uma interface intuitiva      	| Não precisar explicar tanto o jogo para pessoas assistindo 	|
+| HU-4 	| Lara Rocha Pinto     	| Configurar regras para as sessões de Coup                 	| Ter maior controle sobre as partidas                       	|
 
 ## Modelagem do Processo de Negócio 
 
@@ -128,24 +128,20 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
-|01| O projeto deverá ser entregue até o final do semestre |
+|R-1| O projeto deverá ser entregue até o final do semestre |
 
 ## Diagrama de Casos de Uso
 ![diagrama de casos de uso](./casos_de_uso.drawio.png)
 
 # Matriz de Rastreabilidade
 
-A matriz de rastreabilidade é uma ferramenta usada para facilitar a visualização dos relacionamento entre requisitos e outros artefatos ou objetos, permitindo a rastreabilidade entre os requisitos e os objetivos de negócio. 
-
-A matriz deve contemplar todos os elementos relevantes que fazem parte do sistema, conforme a figura meramente ilustrativa apresentada a seguir.
-
-![Exemplo de matriz de rastreabilidade](img/02-matriz-rastreabilidade.png)
-
-> **Links Úteis**:
-> - [Artigo Engenharia de Software 13 - Rastreabilidade](https://www.devmedia.com.br/artigo-engenharia-de-software-13-rastreabilidade/12822/)
-> - [Verificação da rastreabilidade de requisitos usando a integração do IBM Rational RequisitePro e do IBM ClearQuest Test Manager](https://developer.ibm.com/br/tutorials/requirementstraceabilityverificationusingrrpandcctm/)
-> - [IBM Engineering Lifecycle Optimization – Publishing](https://www.ibm.com/br-pt/products/engineering-lifecycle-optimization/publishing/)
-
+| Requisito     | Historias de usuario  |
+|---------------|-----------------------|
+| RF-1          | HU-01                 |
+| RF-2          | HU-04                 |
+| RF-3          |                       |
+| RNF-1         | HU-01, HU-03          |
+| RNF-2         | HU-03                 |
 
 # Gerenciamento de Projeto
 
