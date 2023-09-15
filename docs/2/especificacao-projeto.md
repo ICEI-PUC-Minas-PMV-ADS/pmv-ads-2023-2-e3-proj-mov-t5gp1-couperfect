@@ -131,7 +131,7 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |R-1| O projeto deverá ser entregue até o final do semestre |
 
 ## Diagrama de Casos de Uso
-![diagrama de casos de uso](./casos_de_uso.drawio.png)
+![diagrama de casos de uso](./casos-de-uso.drawio.png)
 
 # Matriz de Rastreabilidade
 
