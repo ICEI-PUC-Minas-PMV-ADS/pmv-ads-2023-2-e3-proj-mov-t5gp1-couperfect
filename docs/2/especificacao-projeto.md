@@ -159,6 +159,7 @@ O gráfico de Gantt ou diagrama de Gantt também é uma ferramenta visual utiliz
 
 ## Gerenciamento de Equipe
 
+<!--Tabala feita no exel se encontra em: ./tabela-gerenciamento-equipe.xlsx-->
 ![Gerenciamento de Equipe](gerenciamento-equipe.png)
 
 ## Gestão de Orçamento
