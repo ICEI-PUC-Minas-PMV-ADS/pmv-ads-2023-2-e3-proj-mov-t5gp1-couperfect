@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\couperfect-server\Domain\Domain.csproj", "{D058E2C4-94D6-4C8C-87CF-D930C3C3C956}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{9006BDE5-EB7A-4C59-84FB-4558C68343BB}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D058E2C4-94D6-4C8C-87CF-D930C3C3C956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D058E2C4-94D6-4C8C-87CF-D930C3C3C956}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D058E2C4-94D6-4C8C-87CF-D930C3C3C956}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D058E2C4-94D6-4C8C-87CF-D930C3C3C956}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F0BFBFD-76F5-4E01-B4D8-7C2179CCD285}
+	EndGlobalSection
+EndGlobal
