@@ -157,6 +157,5 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 ## Gestão de Orçamento
 
-O processo de determinar o orçamento do projeto é uma tarefa que depende, além dos produtos (saídas) dos processos anteriores do gerenciamento de custos, também de produtos oferecidos por outros processos de gerenciamento, como o escopo e o tempo.
-
-![Orçamento](img/02-orcamento.png)
+<!--Tabala feita no exel se encontra em: ./tabela-gestao-orcamento.xlsx-->
+![Orçamento](gestao-orcamento.png)
