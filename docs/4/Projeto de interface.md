@@ -21,4 +21,4 @@ Na tela de realizar login é possível preencher os campos de email do usuário 
 ## Home
 A home, permite que o usuário Crie ou Busque salas, veja o tutorial de jogo ou saia da conta.
 
-![Home logado](imagens_design/Home.png
+![Home logado](imagens_design/Home.png)
