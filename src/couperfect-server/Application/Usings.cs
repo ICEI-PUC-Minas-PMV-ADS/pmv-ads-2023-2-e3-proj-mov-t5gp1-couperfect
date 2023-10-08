@@ -1,0 +1,1 @@
+﻿global using CouperfectServer.Application.Extensions.FluentResultsExtensions;
