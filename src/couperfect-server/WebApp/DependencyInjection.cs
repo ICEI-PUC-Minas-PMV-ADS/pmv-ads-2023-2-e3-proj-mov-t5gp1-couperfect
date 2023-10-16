@@ -1,17 +1,18 @@
-﻿using CouperfectServer.Infrastructure.CouperfectDatabase;
-using CouperfectServer.Application;
+﻿using CouperfectServer.Application;
+using CouperfectServer.Application.Extensions.HashIds;
+using CouperfectServer.Application.Services;
 using CouperfectServer.Domain.Services;
-using CouperfectServer.WebApp.Serialization;
-using Microsoft.OpenApi.Any;
-using Microsoft.OpenApi.Models;
-using CouperfectServer.Application.Extensions;
 using CouperfectServer.Infrastructure;
-using Microsoft.Net.Http.Headers;
+using CouperfectServer.Infrastructure.CouperfectDatabase;
+using CouperfectServer.WebApp.Serialization;
+using CouperfectServer.WebApp.Services;
+using CouperfectServer.WebApp.Services.Token;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Net.Http.Headers;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Models;
 using System.Text;
-using CouperfectServer.WebApp.Services.Token;
-using CouperfectServer.Application.Services;
 
 namespace CouperfectServer.WebApp;
 
@@ -21,6 +22,7 @@ public static class DependencyInjection
     {
         // Add services to the container.
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+        builder.Services.AddDistributedMemoryCache();
         builder.Services.AddSingleton<IDateTimeService, DateTimeService>();
         builder.Services.AddEndpointsApiExplorer();
 
@@ -63,7 +65,8 @@ public static class DependencyInjection
 
         builder.Services.Configure<TokenService.Options>(opt => opt.TokenKey = key);
         builder.Services.AddScoped<ITokenService, TokenService>();
-
+        builder.Services.AddScoped<RequestInfoService>();
+        builder.Services.AddScoped(sp => sp.GetRequiredService<RequestInfoService>() as IRequestInfoService);
         builder.Services.AddAuthentication(x =>
         {
             x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -79,9 +82,26 @@ public static class DependencyInjection
                 ValidateIssuer = false,
                 ValidateAudience = false
             };
+            x.Events = new JwtBearerEvents
+            {
+                OnMessageReceived = context =>
+                {
+                    var accessToken = context.Request.Query["access_token"];
+                    // If the request is for our hub...
+                    var path = context.HttpContext.Request.Path;
+                    if (!string.IsNullOrEmpty(accessToken) &&
+                        (path.StartsWithSegments("/hubs/chat")))
+                    {
+                        // Read the token out of the query string
+                        context.Token = accessToken;
+                    }
+                    return Task.CompletedTask;
+                }
+            };
         });
         builder.Services.AddAuthorization();
 
+        builder.Services.AddSignalR();
         builder.Services.AddCouperfectDb();
         builder.Services.AddCouperfectApp();
         builder.Services.AddHttpContextAccessor();
@@ -105,6 +125,8 @@ public static class DependencyInjection
         app.UseAuthorization();
 
         Endpoints.MapEndpoints(app);
+
+        app.MapHub<GameRoomHub>("hubs/gamerooms");
 
         return Task.CompletedTask;
     }

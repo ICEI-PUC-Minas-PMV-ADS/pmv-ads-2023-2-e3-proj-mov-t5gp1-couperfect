@@ -18,10 +18,7 @@ public partial class TokenService : ITokenService
 
     public string GetToken(Player user)
     {
-        var claims = new List<Claim>
-        {
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
-        };
+        var claims = new Claim[] { new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()) };
 
         var tokenHandler = new JwtSecurityTokenHandler();
 

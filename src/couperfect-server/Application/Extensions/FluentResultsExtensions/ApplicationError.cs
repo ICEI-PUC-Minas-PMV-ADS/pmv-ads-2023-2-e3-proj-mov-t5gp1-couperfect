@@ -9,3 +9,8 @@ public class ApplicationError : Error
 			
 	}
 }
+
+public static class ApplicationErrorExtensions 
+{ 
+
+}

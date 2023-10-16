@@ -5,7 +5,7 @@ using FluentValidation;
 
 namespace CouperfectServer.Application.UseCases.Players.SingIn;
 
-public record PlayerSignInRequest(string Email, string PlainTextPassword) : IRequest<PlayerSignInResponse>
+public sealed record PlayerSignInRequest(string Email, string PlainTextPassword) : IRequest<PlayerSignInResponse>
 {
     public class Validator : AbstractValidator<PlayerSignInRequest>
     {
@@ -17,24 +17,24 @@ public record PlayerSignInRequest(string Email, string PlainTextPassword) : IReq
     }
 }
 
-public record PlayerSignInResponse(string Token);
+public sealed record PlayerSignInResponse(string Token);
 
-public class PlayerSignInRequestHandler : IRequestHandler<PlayerSignInRequest, PlayerSignInResponse>
+public sealed class PlayerSignInRequestHandler : IRequestHandler<PlayerSignInRequest, PlayerSignInResponse>
 {
-    private readonly ICouperfectDbUnitOfWork couperfectUnitOfWork;
+    private readonly ICouperfectDbUnitOfWork dbUnitOfWork;
     private readonly ICryptographyService cryptographyService;
     private readonly ITokenService tokenService;
 
-    public PlayerSignInRequestHandler(ICouperfectDbUnitOfWork couperfectUnitOfWork, ICryptographyService cryptographyService, ITokenService tokenService)
+    public PlayerSignInRequestHandler(ICouperfectDbUnitOfWork dbUnitOfWork, ICryptographyService cryptographyService, ITokenService tokenService)
     {
-        this.couperfectUnitOfWork = couperfectUnitOfWork;
+        this.dbUnitOfWork = dbUnitOfWork;
         this.cryptographyService = cryptographyService;
         this.tokenService = tokenService;
     }
 
     public async Task<Result<PlayerSignInResponse>> Handle(PlayerSignInRequest request, CancellationToken cancellationToken)
     {
-        var player = await couperfectUnitOfWork.PlayerRepository.Find(request.Email, cancellationToken);
+        var player = await dbUnitOfWork.PlayerRepository.Find(request.Email, cancellationToken);
 
         if (player is null)
             return Result.Fail(new ApplicationError("Incorrect user or password"));

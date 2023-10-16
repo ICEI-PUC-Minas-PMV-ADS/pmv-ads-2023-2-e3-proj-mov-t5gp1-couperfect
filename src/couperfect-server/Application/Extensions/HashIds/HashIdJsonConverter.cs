@@ -1,14 +1,16 @@
-﻿using Sqids;
+﻿using CouperfectServer.Domain.Extensions;
+using Sqids;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace CouperfectServer.Application.Extensions;
+namespace CouperfectServer.Application.Extensions.HashIds;
 
-public class HashIdJsonConverter : JsonConverter<HashId>
+public class HashIdJsonConverter : JsonConverter<HashId>, ISingleton<HashIdJsonConverter>
 {
-    private readonly SqidsEncoder<int> sqidsEncoder;
+    public static HashIdJsonConverter Value => new(HashId.Encoder);
 
-    public HashIdJsonConverter(SqidsEncoder<int> sqidsEncoder)
+    private readonly SqidsEncoder<int> sqidsEncoder;
+    private HashIdJsonConverter(SqidsEncoder<int> sqidsEncoder)
     {
         this.sqidsEncoder = sqidsEncoder;
     }

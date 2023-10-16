@@ -2,8 +2,10 @@
 
 namespace CouperfectServer.Application.Extensions.FluentResultsExtensions;
 
+public interface IQueryRequest<TResponse> : IRequest<IEnumerable<TResponse>> { }
 public interface IRequest<TResponse> : MediatR.IRequest<Result<TResponse>> { }
 public interface IRequest : MediatR.IRequest<Result> { }
+
 
 public interface IStreamRequest<TResponse> : MediatR.IStreamRequest<Result<TResponse>> { }
 public interface IStreamRequest : MediatR.IStreamRequest<Result> { }

@@ -1,6 +1,6 @@
 ﻿using Sqids;
 
-namespace CouperfectServer.Application.Extensions;
+namespace CouperfectServer.Application.Extensions.HashIds;
 
 public class HashId
 {

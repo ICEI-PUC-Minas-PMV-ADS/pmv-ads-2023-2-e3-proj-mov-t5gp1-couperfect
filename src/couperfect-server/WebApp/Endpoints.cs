@@ -1,5 +1,7 @@
-﻿using CouperfectServer.Application.UseCases.Players.SingIn;
+﻿using CouperfectServer.Application.UseCases.GameRooms.Query;
+using CouperfectServer.Application.UseCases.Players.SingIn;
 using CouperfectServer.Application.UseCases.Players.SingUp;
+using CouperfectServer.Domain.Extensions;
 using CouperfectServer.WebApp.Serialization.FluentResultsExtensions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -33,6 +35,16 @@ public static class Endpoints
         .AllowAnonymous()
         .WithName("PlayerSignIn")
         .WithOpenApi();
+
+        app.MapGet(
+            "/api/gamerooms",
+            StaticQueryRequestEndpoint<QueryGameRoomsRequest, QueryGameRoomsResponse>()
+        )
+        .Produces<IEnumerable<QueryGameRoomsResponse>>(200)
+        .Produces<ProblemDetails>(500)
+        .RequireAuthorization()
+        .WithName("GameRoomsQuery")
+        .WithOpenApi();
     }
 
     private static Func<TRequest, IServiceScopeFactory, CancellationToken, Task<IResult>> Endpoint<TRequest, TValue>()
@@ -42,9 +54,37 @@ public static class Endpoints
         {
             using var scope = scopeFactory.CreateScope();
             var sender = scope.ServiceProvider.GetRequiredService<ISender>();
-            var behaviours = scope.ServiceProvider.GetServices<IResultSerializerBehaviour>();
             var resultResponse = await sender.Send(request, cancellationToken);
+            var behaviours = scope.ServiceProvider.GetServices<IResultSerializerBehaviour>();
             var selectedBehaviour = behaviours.DetermineBehaviour<TRequest, TValue>(resultResponse);
+            return selectedBehaviour.SerializeToHttpResult(resultResponse);
+        };
+    }
+
+    private static Func<IServiceScopeFactory, CancellationToken, Task<IResult>> StaticRequestEndpoint<TRequest, TValue>()
+        where TRequest : Application.Extensions.FluentResultsExtensions.IRequest<TValue>, ISingleton<TRequest>
+    {
+        return async ([FromServices] IServiceScopeFactory scopeFactory, CancellationToken cancellationToken) =>
+        {
+            using var scope = scopeFactory.CreateScope();
+            var sender = scope.ServiceProvider.GetRequiredService<ISender>();
+            var resultResponse = await sender.Send(TRequest.Value, cancellationToken);
+            var behaviours = scope.ServiceProvider.GetServices<IResultSerializerBehaviour>();
+            var selectedBehaviour = behaviours.DetermineBehaviour<TRequest, TValue>(resultResponse);
+            return selectedBehaviour.SerializeToHttpResult(resultResponse);
+        };
+    }
+
+    private static Func<IServiceScopeFactory, CancellationToken, Task<IResult>> StaticQueryRequestEndpoint<TRequest, TValue>()
+    where TRequest : Application.Extensions.FluentResultsExtensions.IQueryRequest<TValue>, ISingleton<TRequest>
+    {
+        return async ([FromServices] IServiceScopeFactory scopeFactory, CancellationToken cancellationToken) =>
+        {
+            using var scope = scopeFactory.CreateScope();
+            var sender = scope.ServiceProvider.GetRequiredService<ISender>();
+            var resultResponse = await sender.Send(TRequest.Value, cancellationToken);
+            var behaviours = scope.ServiceProvider.GetServices<IResultSerializerBehaviour>();
+            var selectedBehaviour = behaviours.DetermineBehaviour<TRequest, IEnumerable<TValue>>(resultResponse);
             return selectedBehaviour.SerializeToHttpResult(resultResponse);
         };
     }

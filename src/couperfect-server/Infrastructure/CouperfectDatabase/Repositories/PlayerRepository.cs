@@ -22,4 +22,9 @@ public class PlayerRepository : IPlayerRepository
     {
         return couperfectDbContext.Players.FirstOrDefaultAsync(a => a.Email == email, cancellationToken);
     }
+
+    public async Task<Player?> Find(int id, CancellationToken cancellationToken = default)
+    {
+        return await couperfectDbContext.Players.FindAsync(new object[] { id }, cancellationToken: cancellationToken);
+    }
 }

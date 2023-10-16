@@ -23,9 +23,6 @@ public class CouperfectDbContext : DbContext, ICouperfectDbUnitOfWork
     public IPlayerRepository PlayerRepository { get; init; }
 
     public virtual DbSet<Player> Players { get; set; }
-    public virtual DbSet<GameRoom> Rooms { get; set; }
-    public virtual DbSet<GameInvite> Invites { get; set; }
-
 
     public CommittableTransaction BeginTransaction()
     {
@@ -57,16 +54,12 @@ public class CouperfectDbContext : DbContext, ICouperfectDbUnitOfWork
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new PlayerMapping());
-        modelBuilder.ApplyConfiguration(new GameRoomMapping());
-        modelBuilder.ApplyConfiguration(new GameInviteMapping());
 
-        modelBuilder.Entity<GameRoom>().HasMany(x => x.Invites).WithOne(x => x.Room);
-        modelBuilder.Entity<Player>().HasMany(x => x.PlayedRooms).WithMany(x => x.Players);
-        modelBuilder.Entity<GameRoom>().HasOne(x => x.Admin).WithOne(x => x.OwnedRoom).HasForeignKey<GameRoom>(x => x.AdminId);
-        modelBuilder.Entity<GameRoom>().HasMany(x => x.BannedPlayers).WithMany(x => x.BannedRooms);
 
-        // TODO: Investigar
-        modelBuilder.Entity<Player>().Ignore(x => x.CurrentRoom);
+        // TODO: Aplicar remocao da persistencia de salas no banco para persistir somente em memoria
+        //modelBuilder.ApplyConfiguration(new GameRoomMapping());
+        //modelBuilder.ApplyConfiguration(new GameInviteMapping());
+        //modelBuilder.Entity<Player>().Ignore(x => x.CurrentRoom);
 
         base.OnModelCreating(modelBuilder);
     }

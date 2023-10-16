@@ -1,21 +1,15 @@
-﻿using CouperfectServer.Application.Extensions;
+﻿using CouperfectServer.Application.Extensions.HashIds;
+using CouperfectServer.Domain.Extensions.Serialization;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.Extensions.Options;
-using Sqids;
 
 namespace CouperfectServer.WebApp.Serialization;
 
 public class ConfigureJsonOptions : IConfigureOptions<JsonOptions>
 {
-    private readonly SqidsEncoder<int> sqidsEncoder;
-
-    public ConfigureJsonOptions(SqidsEncoder<int> sqidsEncoder)
-    {
-        this.sqidsEncoder = sqidsEncoder;
-    }
-
     public void Configure(JsonOptions options)
     {
-        options.SerializerOptions.Converters.Add(new HashIdJsonConverter(sqidsEncoder));
+        options.SerializerOptions.TypeInfoResolver = PolymorphicTypeResolver.Value;
+        options.SerializerOptions.Converters.Add(HashIdJsonConverter.Value);
     }
 }
