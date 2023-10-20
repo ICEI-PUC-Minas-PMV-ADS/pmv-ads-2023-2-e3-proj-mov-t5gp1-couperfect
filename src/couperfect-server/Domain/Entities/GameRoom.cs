@@ -6,5 +6,7 @@ public class GameRoom
     public bool IsInviteOnly { get; set; }
     public string Name { get; set; } = "Public lobby";
     public int AdminId { get; set; }
-    public HashSet<(int playerId, string connectionId)> Players { get; set; } = new();
+    public HashSet<PlayerInfo> Players { get; set; } = new();
+
+    public record PlayerInfo(int PlayerId, string ConnectionId);
 }

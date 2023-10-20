@@ -61,12 +61,8 @@ public static class DependencyInjection
                 }
             );
         });
-        var key = Encoding.UTF8.GetBytes("ChaveAleatoriaCouperfect");
 
-        builder.Services.Configure<TokenService.Options>(opt => opt.TokenKey = key);
-        builder.Services.AddScoped<ITokenService, TokenService>();
-        builder.Services.AddScoped<RequestInfoService>();
-        builder.Services.AddScoped(sp => sp.GetRequiredService<RequestInfoService>() as IRequestInfoService);
+        var key = Encoding.UTF8.GetBytes("ChaveAleatoriaCouperfect");
         builder.Services.AddAuthentication(x =>
         {
             x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -101,10 +97,17 @@ public static class DependencyInjection
         });
         builder.Services.AddAuthorization();
 
+        builder.Services.AddHttpContextAccessor();
+        builder.Services.AddScoped<ITokenService, TokenService>();
+        builder.Services.AddScoped<RequestInfoService>();
+        builder.Services.Configure<TokenService.Options>(opt => opt.TokenKey = key);
+        builder.Services.AddScoped(sp => sp.GetRequiredService<RequestInfoService>() as IRequestInfoService);
+
+        builder.Services.AddScoped<IGameRoomHubService, GameRoomHubService>();
         builder.Services.AddSignalR();
+
         builder.Services.AddCouperfectDb();
         builder.Services.AddCouperfectApp();
-        builder.Services.AddHttpContextAccessor();
         builder.Services.AddCouperfectSerialization();
 
         return Task.CompletedTask;

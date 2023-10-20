@@ -9,7 +9,7 @@ namespace CouperfectServer.Application.UseCases.GameRooms.Join;
 public record JoinGameRoomHubRequest(
     Guid? RoomGuid = default,
     JoinGameRoomHubRequest.CreationOptionsClass? CreationOptions = default
-) : GameRoomHubRequest, IJsonDerivedType<GameRoomHubRequest>, IRequestInfo
+) : GameRoomHubRequest<JoinGameRoomHubResponse>, IJsonDerivedType<GameRoomHubRequestBase>, IRequestInfo
 {
     public static string Discriminator => nameof(JoinGameRoomHubRequest);
     public IRequestInfo.Info RequestInfo { get; set; } = default!;
@@ -17,18 +17,35 @@ public record JoinGameRoomHubRequest(
     public record CreationOptionsClass(string RoomName = "Public lobby");
 }
 
-public class JoinGameRoomRequestHandler : IRequestHandler<JoinGameRoomHubRequest>
+public record JoinGameRoomHubResponse(string NewToken) : GameRoomHubResponse, IJsonDerivedType<GameRoomHubResponse>
+{
+    public static string Discriminator => nameof(JoinGameRoomHubResponse);
+}
+
+public class JoinGameRoomRequestHandler : IGameRoomRequestHandler<JoinGameRoomHubRequest, JoinGameRoomHubResponse>
 {
     private readonly ICouperfectDbUnitOfWork dbUnitOfWork;
     private readonly IGameRoomService gameRoomService;
+    private readonly IGameRoomHubService gameRoomHubService;
+    private readonly ITokenService tokenService;
+    private readonly IRequestInfoService requestInfoService;
 
-    public JoinGameRoomRequestHandler(ICouperfectDbUnitOfWork dbUnitOfWork, IGameRoomService gameRoomService)
+    public JoinGameRoomRequestHandler(
+        ICouperfectDbUnitOfWork dbUnitOfWork,
+        IGameRoomService gameRoomService,
+        IGameRoomHubService gameRoomHubService,
+        ITokenService tokenService,
+        IRequestInfoService requestInfoService
+    )
     {
         this.dbUnitOfWork = dbUnitOfWork;
         this.gameRoomService = gameRoomService;
+        this.gameRoomHubService = gameRoomHubService;
+        this.tokenService = tokenService;
+        this.requestInfoService = requestInfoService;
     }
 
-    public async Task<Result> Handle(JoinGameRoomHubRequest request, CancellationToken cancellationToken)
+    public async Task<Result<GameRoomHubResponse>> Handle(JoinGameRoomHubRequest request, CancellationToken cancellationToken)
     {
         if (request.RequestInfo.RequesterId is null)
             return Result.Fail("Requester not found");
@@ -38,18 +55,16 @@ public class JoinGameRoomRequestHandler : IRequestHandler<JoinGameRoomHubRequest
         if (requester is null)
             return Result.Fail("Requester not found");
 
+        //if (requester.CurrentRoom is not null)
+        //    return Result.Fail("Requester already on a room");
+
         var creationOptions = request.CreationOptions ?? (request.RoomGuid is null ? new JoinGameRoomHubRequest.CreationOptionsClass() : null);
 
-        if (creationOptions is not null)
-        {
-            var newRoom = new GameRoom
-            {
-                AdminId = requester.Id,
-                Name = creationOptions.RoomName,
-                Players = new HashSet<(int playerId, string connectionId)> { (requester.Id, request.RequestInfo.HubConnectionId!) }
-            };
+        Guid? roomGuid = request.RoomGuid;
 
-            await gameRoomService.ListNewRoom(newRoom, cancellationToken);
+        if (creationOptions is not null && roomGuid is null)
+        {
+            roomGuid = await CreateNewRoom(request, requester, creationOptions, cancellationToken);
         }
         else
         {
@@ -58,11 +73,41 @@ public class JoinGameRoomRequestHandler : IRequestHandler<JoinGameRoomHubRequest
             if (room is null)
                 return Result.Fail("Room not found");
 
-            // TODO: Adicionar verificacao de banimento
-            room.Players.Add((requester.Id, request.RequestInfo.HubConnectionId!));
-            await gameRoomService.UpdateListing(room, cancellationToken);
+            // TODO: Adicionar verificacao de banimento e se o player ja entrou na sala
+            room.Players.Add(new GameRoom.PlayerInfo(requester.Id, request.RequestInfo.HubConnectionId!));
+            await gameRoomService.Update(room, cancellationToken);
         }
 
-        return Result.Ok();
+        requester.CurrentRoom = roomGuid;
+        dbUnitOfWork.PlayerRepository.Update(requester);
+        await dbUnitOfWork.SaveChangesAsync(cancellationToken);
+
+        var roomGuidStr = roomGuid!.Value.ToString()!;
+
+        requestInfoService.SetRoomGuid(roomGuid!.Value);
+
+        await gameRoomHubService.JoinGroup(
+            request.RequestInfo.HubConnectionId!,
+            roomGuidStr,
+            cancellationToken
+        );
+
+        var newToken = tokenService.GetToken(requester);
+
+        return new JoinGameRoomHubResponse(newToken);
+    }
+
+    private async Task<Guid?> CreateNewRoom(JoinGameRoomHubRequest request, Player requester, JoinGameRoomHubRequest.CreationOptionsClass creationOptions, CancellationToken cancellationToken)
+    {
+        var newRoom = new GameRoom
+        {
+            AdminId = requester.Id,
+            Name = creationOptions.RoomName,
+            Players = new HashSet<GameRoom.PlayerInfo> { new GameRoom.PlayerInfo(requester.Id, request.RequestInfo.HubConnectionId!) }
+        };
+
+        await gameRoomService.SaveFreshRoom(newRoom, cancellationToken);
+
+        return newRoom.Guid;
     }
 }

@@ -11,7 +11,7 @@ public class QueryGameRoomsRequest : IQueryRequest<QueryGameRoomsResponse>, ISin
     public static QueryGameRoomsRequest Value => new();
 }
 
-public record QueryGameRoomsResponse(Guid roomGuid, string RoomName, int CurrentPlayers);
+public record QueryGameRoomsResponse(Guid RoomGuid, string RoomName, int CurrentPlayers);
 
 public class QueryGameRoomsRequestHandler : MediatR.IRequestHandler<QueryGameRoomsRequest, Result<IEnumerable<QueryGameRoomsResponse>>>
 {

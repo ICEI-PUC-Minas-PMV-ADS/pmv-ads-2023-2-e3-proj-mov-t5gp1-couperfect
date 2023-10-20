@@ -17,7 +17,7 @@ class RequestInfoBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TR
 
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
-        await requestInfoService.FillRequestInfo(request, cancellationToken);
+        request.RequestInfo = await requestInfoService.SetRequestInfo(cancellationToken);
         return await next();
     }
 }

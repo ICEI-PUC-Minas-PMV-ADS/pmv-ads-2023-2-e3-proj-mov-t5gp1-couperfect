@@ -3,8 +3,9 @@
 public interface IRequestInfo
 {
     public record Info(
-        int? RequesterId, 
-        string? HubConnectionId, 
+        int? RequesterId,
+        string? HubConnectionId,
+        Guid? RoomId,
         DateTime RecievedAt
     );
 
@@ -13,5 +14,7 @@ public interface IRequestInfo
 
 public interface IRequestInfoService
 {
-    Task FillRequestInfo(IRequestInfo requestInfo, CancellationToken cancellationToken = default);
+    IRequestInfo.Info? RequestInfo { get; }
+    void SetRoomGuid(Guid roomGuid);
+    Task<IRequestInfo.Info> SetRequestInfo(CancellationToken cancellationToken = default);
 }
