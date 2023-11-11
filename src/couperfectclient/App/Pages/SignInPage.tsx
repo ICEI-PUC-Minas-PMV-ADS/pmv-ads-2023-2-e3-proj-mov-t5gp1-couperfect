@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {StyleSheet, View} from 'react-native';
 import InputField from '../Components/InputField';
-import LoginButton from '../Components/LoginButton';
+import CoupButton from '../Components/CoupButton';
 import AuthContext from '../Context/auth';
 
 const SignInPage: React.FC = () => {
@@ -17,7 +17,7 @@ const SignInPage: React.FC = () => {
     <View style={styles.container}>
       <InputField placeholder="Email" />
       <InputField placeholder="Senha" secureTextEntry />
-      <LoginButton onPress={handleSignIn} />
+      <CoupButton onPress={handleSignIn} title='Entrar'/>
     </View>
   );
 };

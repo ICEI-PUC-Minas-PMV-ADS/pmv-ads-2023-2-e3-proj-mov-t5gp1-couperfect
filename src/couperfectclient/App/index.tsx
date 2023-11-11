@@ -7,7 +7,7 @@ import Routes from './Routes';
 function App(): JSX.Element {
   return (
     <NavigationContainer>
-      <AuthProvider key={null} type={''} props={undefined}>
+      <AuthProvider>
         <Routes />
       </AuthProvider>
     </NavigationContainer>
