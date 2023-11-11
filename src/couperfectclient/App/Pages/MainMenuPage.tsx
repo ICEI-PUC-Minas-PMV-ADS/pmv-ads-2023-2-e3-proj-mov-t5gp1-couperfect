@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-const MainMenu: React.FC = () => {
+const MainMenuPage: React.FC = () => {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>Main Menu</Text>
@@ -9,4 +9,4 @@ const MainMenu: React.FC = () => {
     );
 }
 
-export default MainMenu;
+export default MainMenuPage;
