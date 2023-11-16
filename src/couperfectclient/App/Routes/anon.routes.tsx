@@ -5,8 +5,8 @@ const {Screen, Navigator} = createNativeStackNavigator();
 
 const AnonRoutes = () => {
     return (
-        <Navigator>
-            <Screen name="HomePage" component={SignInPage} />
+        <Navigator screenOptions={{ headerShown: false }}>
+            <Screen name="SingInPage" component={SignInPage} />
         </Navigator>
     )
 }
