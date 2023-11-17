@@ -1,12 +1,15 @@
-import React from "react";
-import { Text, View } from "react-native";
+import React from 'react';
+import { Button, ImageBackground } from 'react-native';
+import ModalLogo from '../Components/ModalLogo';
 
 const MainMenuPage: React.FC = () => {
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Main Menu</Text>
-        </View>
-    );
-}
+  return (
+    <ImageBackground source={require('../Assets/Background.png')}>
+      <ModalLogo>
+        <Button title="fjdslfdad"/>
+      </ModalLogo>
+    </ImageBackground>
+  );
+};
 
 export default MainMenuPage;

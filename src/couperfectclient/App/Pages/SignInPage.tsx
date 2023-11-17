@@ -1,8 +1,9 @@
 import React, {useContext} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {ImageBackground, StyleSheet, View} from 'react-native';
 import InputField from '../Components/InputField';
 import CoupButton from '../Components/CoupButton';
 import AuthContext from '../Context/auth';
+import ModalLogo from '../Components/ModalLogo';
 
 const SignInPage: React.FC = () => {
   const {signed, signIn, user} = useContext(AuthContext);
@@ -14,20 +15,27 @@ const SignInPage: React.FC = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <InputField placeholder="Email" />
-      <InputField placeholder="Senha" secureTextEntry />
-      <CoupButton onPress={handleSignIn} title='Entrar'/>
-    </View>
+    <ImageBackground
+      source={require('../Assets/Background.png')}
+      style={styles.background}>
+      <ModalLogo>
+        <InputField placeholder="Email" />
+        <InputField placeholder="Senha" secureTextEntry />
+        <CoupButton onPress={handleSignIn} title="Entrar" />
+      </ModalLogo>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  background: {
+    width: '100%',
+    height: '100%',
     justifyContent: 'center',
-    padding: 16,
   },
+  container : {
+
+  }
 });
 
 export default SignInPage;
