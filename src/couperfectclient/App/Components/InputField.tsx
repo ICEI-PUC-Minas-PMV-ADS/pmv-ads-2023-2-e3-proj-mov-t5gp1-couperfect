@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
-import { StyleSheet, TextInput } from 'react-native';
+import { StyleSheet, TextInput, TextStyle } from 'react-native';
 import colors from '../Styles';
 
-const InputField: React.FC<{ placeholder: string; secureTextEntry?: boolean }> = ({ placeholder, secureTextEntry }) => {
+interface InputFieldProp {
+  placeholder: string;
+  secureTextEntry?: boolean;
+  style?: TextStyle
+}
+
+const InputField: React.FC<InputFieldProp> = ({ placeholder, secureTextEntry, style }) => {
   const [value, setValue] = useState('');
+
+  const styles = StyleSheet.compose(defaultStyle, style);
 
   return (
     <TextInput
-      style={styles.input}
+      style={styles}
       onChangeText={setValue}
       value={value}
       placeholder={placeholder}
@@ -16,16 +24,14 @@ const InputField: React.FC<{ placeholder: string; secureTextEntry?: boolean }> =
   );
 };
 
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    borderColor: colors.PrimaryContrast,
-    borderWidth: 1,
-    marginBottom: 12,
-    paddingLeft: 8,
-    borderRadius: 4,
-    color: colors.NeutralContrast
-  },
-});
+const defaultStyle = {
+  height: 40,
+  borderColor: colors.PrimaryContrast,
+  borderWidth: 1,
+  marginBottom: 12,
+  paddingLeft: 8,
+  borderRadius: 4,
+  color: colors.NeutralContrast
+};
 
 export default InputField;
