@@ -28,8 +28,7 @@ const HomePage:React.FC = () => {
       </TouchableOpacity>
       <AppRoutes/>
         <TextButton title="Entrar" onPress={() => navigation.dispatch(CommonActions.navigate('SignInPage'))} />
-        <TextButton title="Registrar-se" onPress={() => navigation.dispatch(CommonActions.navigate('SignUpPage'))} />
-        <TextButton title="Tutorial" onPress={() => navigation.dispatch(CommonActions.navigate('TutorialPage'))} />
+        <TextButton title="Registrar-se" onPress={() => navigation.dispatch(CommonActions.navigate('SingUpPage'))} />
         <TextButton title="Sair" onPress={(handleExitPress)} />
     </View>
   );

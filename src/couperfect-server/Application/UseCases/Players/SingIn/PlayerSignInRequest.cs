@@ -17,7 +17,7 @@ public sealed record PlayerSignInRequest(string Email, string PlainTextPassword)
     }
 }
 
-public sealed record PlayerSignInResponse(string Token);
+public sealed record PlayerSignInResponse(string Token, string Name);
 
 public sealed class PlayerSignInRequestHandler : IRequestHandler<PlayerSignInRequest, PlayerSignInResponse>
 {
@@ -44,6 +44,6 @@ public sealed class PlayerSignInRequestHandler : IRequestHandler<PlayerSignInReq
 
         var token = tokenService.GetToken(player);
 
-        return new PlayerSignInResponse(token).ToResult();
+        return new PlayerSignInResponse(token, new(player.Name)).ToResult();
     }
 }

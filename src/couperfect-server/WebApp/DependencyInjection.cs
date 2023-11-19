@@ -139,5 +139,24 @@ public static class DependencyInjection
         var context = services.GetRequiredService<CouperfectDbContext>();
 
         await context.Database.EnsureCreatedAsync();
+
+        if (!context.Players.Any())
+        {
+            var cryptoService = services.GetRequiredService<ICryptographyService>();
+            var dateTimeService = services.GetRequiredService<IDateTimeService>();
+            var (passwordHash, salt) = cryptoService.GenerateSaltedSHA512Hash("Coup@123");
+
+            await context.Players.AddAsync(
+                new()
+                {
+                    Email = "couplayer@couperfect.com",
+                    Name = "CouPlayer",
+                    PasswordHash = passwordHash,
+                    PasswordSalt = salt,
+                    CreatedAt = dateTimeService.Now
+                });
+
+            await context.SaveChangesAsync();
+        }
     }
 }
