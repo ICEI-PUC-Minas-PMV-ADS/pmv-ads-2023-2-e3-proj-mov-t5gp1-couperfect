@@ -21,6 +21,7 @@ const InputField: React.FC<InputFieldProp> = ({
 
   return (
     <TextInput
+      placeholderTextColor={colors.NeutralContrast}
       style={styles}
       onChangeText={e => {
         setValue(e);

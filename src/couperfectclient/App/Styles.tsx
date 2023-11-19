@@ -1,3 +1,5 @@
+import { TextStyle } from "react-native";
+
 interface Colors {
   Neutral: string;
   NeutralContrast: string;

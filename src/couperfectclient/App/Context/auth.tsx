@@ -1,5 +1,5 @@
-import React, { ReactElement, createContext, useState } from "react";
-import * as SingInRepository from '../Repositories/SingIn'
+import React, { ReactElement, createContext, useState } from 'react';
+import * as SingInRepository from '../Repositories/SingIn';
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
@@ -7,10 +7,11 @@ interface AuthContextData {
   signed: boolean;
   user: object | null;
   signIn(request: AuthRequest): Promise<void>;
+  signOut(): void;
 }
 
 interface AuthProviderProps extends React.PropsWithChildren {
-  children: ReactElement
+  children: ReactElement;
 }
 
 interface AuthRequest{
@@ -29,11 +30,15 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setUser({  });
   }
 
+  function signOut() {
+    setUser(null);
+  }
+
   return (
-    <AuthContext.Provider  value={{signed: Boolean(user), user, signIn}}>
+    <AuthContext.Provider  value={{signed: Boolean(user), user, signIn, signOut}}>
       {children}
     </AuthContext.Provider>
-  )
+  );
 };
 
 export default AuthContext;
