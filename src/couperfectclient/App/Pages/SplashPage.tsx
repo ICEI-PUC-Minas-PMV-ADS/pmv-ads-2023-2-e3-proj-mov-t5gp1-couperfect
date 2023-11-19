@@ -6,7 +6,7 @@ const SplashPage: React.FC = () => {
   const navigation = useNavigation();
 
   const handlePress = () => {
-    navigation.dispatch(CommonActions.navigate('StartPage'));
+    navigation.dispatch(CommonActions.navigate('HomePage'));
   };
 
   return (
