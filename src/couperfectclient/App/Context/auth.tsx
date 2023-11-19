@@ -25,11 +25,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const response = await SingInRepository.signIn({ email: request.email, plainTextPassword: request.password });
     
     console.log(response);
-
-    if (response === undefined)
-      return;
-
-    setUser({});
+    
+    setUser({  });
   }
 
   return (
