@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GestureResponderEvent, Pressable, StyleSheet, ViewStyle } from 'react-native';
 import ArrowReturnLeftSvg from '../Assets/ArrowReturnLeft.svg';
 import EyeSvg from '../Assets/Eye.svg';

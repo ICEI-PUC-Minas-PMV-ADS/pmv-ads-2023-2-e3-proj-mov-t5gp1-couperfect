@@ -1,9 +1,9 @@
+import { useNavigation } from '@react-navigation/native';
 import { ReactNode } from 'react';
 import { StyleSheet, View } from 'react-native';
-import IconButton from './IconButton';
-import colors from '../Styles';
 import CoupLogoSvg from '../Assets/Logo.svg';
-import { CommonActions, useNavigation } from '@react-navigation/native';
+import colors from '../Styles';
+import IconButton from './IconButton';
 
 interface ModalLogoProps {
   children: ReactNode;

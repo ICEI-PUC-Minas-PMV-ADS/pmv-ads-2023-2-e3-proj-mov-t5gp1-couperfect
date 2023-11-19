@@ -1,34 +1,40 @@
-import React, { useContext } from 'react';
-import { ImageBackground, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import Background from '../Components/Background';
+import CoupButton from '../Components/CoupButton';
+import InputField from '../Components/InputField';
 import ModalLogo from '../Components/ModalLogo';
-import AuthContext from '../Context/auth';
+import PasswordField from '../Components/PasswordField';
 
-const SignInPage: React.FC = () => {
-  const {signed, signIn, user} = useContext(AuthContext);
-  console.log(signed);
-  console.log(user);
+const SignUpPage: React.FC = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  function handleSignUp() {
+    if (confirmPassword !== password) console.log('Senhas não coincidem');
+    else console.log('Cadastrado com sucesso!');
+  }
 
   return (
-    <ImageBackground
-      source={require('../Assets/Background.png')}
-      style={styles.background}>
+    <Background>
       <ModalLogo>
-        
+          <InputField
+            placeholder="Nome"
+            style={{width: '100%'}}
+            onTextChange={setName}
+          />
+          <InputField
+            placeholder="Email"
+            style={{width: '100%'}}
+            onTextChange={setEmail}
+          />
+          <PasswordField onTextChange={setPassword} placeholder="Senha" />
+          <PasswordField onTextChange={setConfirmPassword} placeholder="Confirmar Senha" />
+          <CoupButton onPress={handleSignUp} title="Registrar-se" />
       </ModalLogo>
-    </ImageBackground>
+    </Background>
   );
 };
 
-const styles = StyleSheet.create({
-  background: {
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  container : {
-
-  }
-});
-
-export default SignInPage;
+export default SignUpPage;

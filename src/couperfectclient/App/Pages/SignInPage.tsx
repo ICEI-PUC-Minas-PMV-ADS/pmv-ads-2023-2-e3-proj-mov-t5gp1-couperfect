@@ -1,10 +1,9 @@
-import React, {useContext, useState} from 'react';
-import {View} from 'react-native';
+import React, { useContext, useState } from 'react';
 import Background from '../Components/Background';
 import CoupButton from '../Components/CoupButton';
-import IconButton from '../Components/IconButton';
 import InputField from '../Components/InputField';
 import ModalLogo from '../Components/ModalLogo';
+import PasswordField from '../Components/PasswordField';
 import AuthContext from '../Context/auth';
 
 const SignInPage: React.FC = () => {
@@ -19,27 +18,13 @@ const SignInPage: React.FC = () => {
   return (
     <Background>
       <ModalLogo>
-        <View style={{flexDirection: 'column', alignItems: 'stretch'}}>
           <InputField
             placeholder="Email"
             style={{width: '100%'}}
             onTextChange={setEmail}
           />
-          <View style={{flexDirection: 'row', width: '100%'}}>
-            <InputField
-              placeholder="Senha"
-              secureTextEntry={isPasswordVisible}
-              style={{width: '85%'}}
-              onTextChange={setPassword}
-            />
-            <IconButton
-              type="eye"
-              isEyeOpen={isPasswordVisible}
-              setEyeOpen={setPasswordVisibility}
-            />
-          </View>
+          <PasswordField onTextChange={setPassword} placeholder='Senha'/>
           <CoupButton onPress={handleSignIn} title="Entrar" />
-        </View>
       </ModalLogo>
     </Background>
   );
