@@ -1,33 +1,33 @@
-import React, {useContext} from 'react';
-import {StyleSheet, View} from 'react-native';
-import InputField from '../Components/InputField';
+import React, { useContext, useState } from 'react';
+import Background from '../Components/Background';
 import CoupButton from '../Components/CoupButton';
+import InputField from '../Components/InputField';
+import ModalLogo from '../Components/ModalLogo';
+import PasswordField from '../Components/PasswordField';
 import AuthContext from '../Context/auth';
 
 const SignInPage: React.FC = () => {
-  const {signed, signIn, user} = useContext(AuthContext);
-  console.log(signed);
-  console.log(user);
+  const {signIn} = useContext(AuthContext);
 
-  const handleSignIn = async () => {
-    await signIn();
-  };
+  const handleSignIn = async () => await signIn({ email, password });
+
+  const [isPasswordVisible, setPasswordVisibility] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   return (
-    <View style={styles.container}>
-      <InputField placeholder="Email" />
-      <InputField placeholder="Senha" secureTextEntry />
-      <CoupButton onPress={handleSignIn} title='Entrar'/>
-    </View>
+    <Background>
+      <ModalLogo>
+          <InputField
+            placeholder="Email"
+            style={{width: '100%'}}
+            onTextChange={setEmail}
+          />
+          <PasswordField onTextChange={setPassword} placeholder='Senha'/>
+          <CoupButton onPress={handleSignIn} title="Entrar" />
+      </ModalLogo>
+    </Background>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    padding: 16,
-  },
-});
 
 export default SignInPage;

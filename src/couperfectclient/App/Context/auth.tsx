@@ -6,25 +6,35 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 interface AuthContextData {
   signed: boolean;
   user: object | null;
-  signIn(): Promise<void>;
+  signIn(request: AuthRequest): Promise<void>;
 }
 
 interface AuthProviderProps extends React.PropsWithChildren {
   children: ReactElement
 }
 
-export const AuthProvider: React.FC<AuthProviderProps> = (props) => {
+interface AuthRequest{
+  email: string;
+  password: string;
+}
+
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<object | null>(null);
 
-  async function signIn() {
-    const respose = await SingInRepository.signIn();
+  async function signIn(request: AuthRequest) {
+    const response = await SingInRepository.signIn({ email: request.email, plainTextPassword: request.password });
+    
+    console.log(response);
 
-    setUser(respose.user);
+    if (response === undefined)
+      return;
+
+    setUser({});
   }
 
   return (
     <AuthContext.Provider  value={{signed: Boolean(user), user, signIn}}>
-      {props.children}
+      {children}
     </AuthContext.Provider>
   )
 };

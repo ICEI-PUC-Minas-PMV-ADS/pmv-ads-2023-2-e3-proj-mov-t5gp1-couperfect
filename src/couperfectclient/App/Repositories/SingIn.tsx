@@ -1,21 +1,20 @@
-interface Response {
+import api from './api';
+
+interface SuccessResponse {
   token: string;
-  user: {
-    name: string,
-    email: string,
-  };
+  name: string;
 }
 
-export function signIn(): Promise<Response> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        token: 'jk12h3j21h3jk212h3jk12h3jkh12j3kh12k123hh21g3f12f3',
-        user:{
-          name: 'Adevidrus',
-          email: 'adevidrus@2021protechsolutions.com.br'
-        }
-      });
-    }, 2000);
-  });
+interface Request {
+  email: string;
+  plainTextPassword: string;
+}
+
+export async function signIn(request: Request) {
+  try {
+    const {data} = await api.post('api/players/singin', { email: request.email, plainTextPassword: request.plainTextPassword });
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 }
