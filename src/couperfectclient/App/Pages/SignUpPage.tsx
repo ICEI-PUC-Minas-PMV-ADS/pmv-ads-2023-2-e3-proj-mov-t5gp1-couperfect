@@ -1,18 +1,12 @@
-import React, {useContext} from 'react';
-import {ImageBackground, StyleSheet, View} from 'react-native';
-import InputField from '../Components/InputField';
-import CoupButton from '../Components/CoupButton';
-import AuthContext from '../Context/auth';
+import React, { useContext } from 'react';
+import { ImageBackground, StyleSheet } from 'react-native';
 import ModalLogo from '../Components/ModalLogo';
+import AuthContext from '../Context/auth';
 
 const SignInPage: React.FC = () => {
   const {signed, signIn, user} = useContext(AuthContext);
   console.log(signed);
   console.log(user);
-
-  const handleSignIn = async () => {
-    await signIn();
-  };
 
   return (
     <ImageBackground

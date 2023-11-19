@@ -5,10 +5,16 @@ import colors from '../Styles';
 interface InputFieldProp {
   placeholder: string;
   secureTextEntry?: boolean;
-  style?: TextStyle
+  style?: TextStyle;
+  onTextChange(e: string): void;
 }
 
-const InputField: React.FC<InputFieldProp> = ({ placeholder, secureTextEntry, style }) => {
+const InputField: React.FC<InputFieldProp> = ({
+  placeholder,
+  secureTextEntry,
+  style,
+  onTextChange
+}) => {
   const [value, setValue] = useState('');
 
   const styles = StyleSheet.compose(defaultStyle, style);
@@ -16,7 +22,10 @@ const InputField: React.FC<InputFieldProp> = ({ placeholder, secureTextEntry, st
   return (
     <TextInput
       style={styles}
-      onChangeText={setValue}
+      onChangeText={e => {
+        setValue(e);
+        onTextChange(e);
+      }}
       value={value}
       placeholder={placeholder}
       secureTextEntry={secureTextEntry}
@@ -31,7 +40,7 @@ const defaultStyle = {
   marginBottom: 12,
   paddingLeft: 8,
   borderRadius: 4,
-  color: colors.NeutralContrast
+  color: colors.NeutralContrast,
 };
 
 export default InputField;
