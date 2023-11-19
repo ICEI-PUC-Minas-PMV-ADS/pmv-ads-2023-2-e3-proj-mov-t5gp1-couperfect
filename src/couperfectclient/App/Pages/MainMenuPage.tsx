@@ -1,6 +1,7 @@
-import React, {useContext} from 'react';
-import {Image, ImageBackground, Pressable, StyleSheet} from 'react-native';
+import React, { useContext } from 'react';
+import { Image, Pressable, StyleSheet } from 'react-native';
 import Anchor from '../Components/Anchor';
+import Background from '../Components/Background';
 import ListItem from '../Components/ListItem';
 import AuthContext from '../Context/auth';
 
@@ -8,23 +9,20 @@ const MainMenuPage: React.FC = () => {
   const {signOut} = useContext(AuthContext);
 
   return (
-    <ImageBackground
-      source={require('../Assets/Background.png')}
-      style={styles.background}>
+    <Background style={styles.background}>
       <Image style={styles.logo} source={require('../Assets/Logo.png')} />
       <Anchor route="QueryRooms" text="Buscar Salas" />
       <Anchor route="CreateRoom" text="Criar Sala" />
       <Pressable onPress={signOut}>
         <ListItem text="Sair" />
       </Pressable>
-    </ImageBackground>
+    </Background>
   );
 };
 const styles = StyleSheet.create({
   background: {
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start'
   },
   logo: {
     position: 'relative',
