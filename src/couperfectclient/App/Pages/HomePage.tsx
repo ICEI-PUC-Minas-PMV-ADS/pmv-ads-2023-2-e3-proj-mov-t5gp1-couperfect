@@ -5,19 +5,13 @@ import {
   Image,
   Platform,
   Pressable,
-  StyleSheet,
-  TouchableOpacity
+  StyleSheet
 } from 'react-native';
 import Anchor from '../Components/Anchor';
 import Background from '../Components/Background';
 import ListItem from '../Components/ListItem';
 
 const HomePage: React.FC = () => {
-  const navigation = useNavigation();
-
-  const handleLogoPress = () => {
-    navigation.dispatch(CommonActions.navigate('SignInPage'));
-  };
 
   const exit = () => {
     if (Platform.OS === 'android') {
@@ -29,9 +23,7 @@ const HomePage: React.FC = () => {
 
   return (
     <Background style={styles.container}>
-        <TouchableOpacity onPress={handleLogoPress}>
           <Image source={require('../Assets/Logo.png')} style={styles.logo} />
-        </TouchableOpacity>
 
         <Anchor text="Entrar" route="SignInPage" />
         <Anchor text="Registrar-se" route="SingUpPage" />
