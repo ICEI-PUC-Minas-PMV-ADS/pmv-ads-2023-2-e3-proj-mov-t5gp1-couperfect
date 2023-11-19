@@ -1,67 +1,46 @@
-import { useNavigation } from "@react-navigation/native";
-import React from "react";
-import {ImageBackground, Text, View, StyleSheet, Pressable } from "react-native";
-import CoupLogo from '../Assets/Logo.svg'
-import { CommonActions } from "@react-navigation/native";
-
+import React, {useContext} from 'react';
+import {Image, ImageBackground, Pressable, StyleSheet} from 'react-native';
+import Anchor from '../Components/Anchor';
+import ListItem from '../Components/ListItem';
+import AuthContext from '../Context/auth';
 
 const MainMenuPage: React.FC = () => {
-    const navigator = useNavigation();
+  const {signOut} = useContext(AuthContext);
 
-    function buscarSalaPress() 
-    {
-        navigator.dispatch(CommonActions.navigate('dtgfdg'))
-    }
-    function criarSalaPress()
-    {
-        navigator.dispatch(CommonActions.navigate(''))
-    }
-    function sairPress()
-    {
-        navigator.dispatch(CommonActions.navigate('HomePage'))
-    }
-
-    return (
-        <ImageBackground
-          source={require('../Assets/Background.png')}
-          style={styles.background}>
-          <CoupLogo style={styles.logoConteiner}/>
-          <Pressable onPress={buscarSalaPress}>
-            <Text style = {styles.textStyle}>
-                Buscar Sala
-            </Text>
-          </Pressable>
-          <Pressable onPress={criarSalaPress}>
-            <Text style = {styles.textStyle}>
-                Criar Sala
-            </Text>
-          </Pressable>
-          <Pressable onPress={sairPress}>
-            <Text style = {styles.textStyle}>
-                Sair
-            </Text>
-          </Pressable>
-        </ImageBackground>
-    );
-}
+  return (
+    <ImageBackground
+      source={require('../Assets/Background.png')}
+      style={styles.background}>
+      <Image style={styles.logo} source={require('../Assets/Logo.png')} />
+      <Anchor route="QueryRooms" text="Buscar Salas" />
+      <Anchor route="CreateRoom" text="Criar Sala" />
+      <Pressable onPress={signOut}>
+        <ListItem text="Sair" />
+      </Pressable>
+    </ImageBackground>
+  );
+};
 const styles = StyleSheet.create({
-    background: {
-      width: '100%',
-      height: '100%',
-      justifyContent: 'center',
-    },
-    logoConteiner : {
-        alignSelf:'center',
-        marginTop:'5%',
-        marginLeft:'50%',
-    },
-    textStyle:{
-        color: 'white',
-        paddingBottom:5,
-        paddingRight:30,
-        paddingLeft:40,
-        fontSize: 30
-    }
-  });
+  background: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+  },
+  logo: {
+    position: 'relative',
+    left: 420,
+    top: 100,
+    width: 260,
+    height: 130,
+    resizeMode: 'contain',
+  },
+  textStyle: {
+    color: 'white',
+    paddingBottom: 5,
+    paddingRight: 30,
+    paddingLeft: 40,
+    fontSize: 30,
+  },
+});
 
 export default MainMenuPage;

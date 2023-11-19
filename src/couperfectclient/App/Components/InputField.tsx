@@ -9,6 +9,7 @@ const InputField: React.FC<{ placeholder: string; secureTextEntry?: boolean }> =
     <TextInput
       style={styles.input}
       onChangeText={setValue}
+      placeholderTextColor={colors.NeutralContrast}
       value={value}
       placeholder={placeholder}
       secureTextEntry={secureTextEntry}
