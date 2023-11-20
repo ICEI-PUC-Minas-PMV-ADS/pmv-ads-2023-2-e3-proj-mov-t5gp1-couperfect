@@ -11,13 +11,12 @@ const SignInPage: React.FC = () => {
 
   const handleSignIn = async () => await signIn({ email, password });
 
-  const [isPasswordVisible, setPasswordVisibility] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
     <Background>
-      <ModalLogo>
+      <ModalLogo title='Login'>
           <InputField
             placeholder="Email"
             style={{width: '100%'}}

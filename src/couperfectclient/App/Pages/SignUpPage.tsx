@@ -18,7 +18,7 @@ const SignUpPage: React.FC = () => {
 
   return (
     <Background>
-      <ModalLogo>
+      <ModalLogo title='Cadastro'>
           <InputField
             placeholder="Nome"
             style={{width: '100%'}}

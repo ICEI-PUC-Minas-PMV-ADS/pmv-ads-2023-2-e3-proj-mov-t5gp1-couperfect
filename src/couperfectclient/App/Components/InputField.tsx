@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, TextInput, TextStyle } from 'react-native';
-import colors from '../Styles';
+import { colors } from '../Styles';
 
 interface InputFieldProp {
   placeholder: string;
