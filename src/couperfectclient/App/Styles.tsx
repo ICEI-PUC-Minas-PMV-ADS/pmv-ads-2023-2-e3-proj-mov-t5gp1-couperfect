@@ -14,4 +14,12 @@ const colors: Readonly<Colors> = {
   PrimaryContrast: '#DAD8D8',
 };
 
-export default colors;
+const contrastTextStyle : Readonly<TextStyle> = {
+  color: '#DAD8D8',
+  fontSize: 35,
+  textShadowColor: '#0149BF',
+  textShadowOffset: {width: -1, height: 1},
+  textShadowRadius: 10,
+}
+
+export { colors, contrastTextStyle };

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button } from 'react-native';
-import colors from '../Styles';
+import { colors } from '../Styles';
 
 interface CoupButtonProps{
   title : string;
-  onPress: () => void;
+  onPress?: () => void;
 }
 
 const CoupButton: React.FC<CoupButtonProps> = ({ onPress, title }) => {

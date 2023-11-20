@@ -3,7 +3,7 @@ import { GestureResponderEvent, Pressable, StyleSheet, ViewStyle } from 'react-n
 import ArrowReturnLeftSvg from '../Assets/ArrowReturnLeft.svg';
 import EyeSvg from '../Assets/Eye.svg';
 import EyeSlashSvg from '../Assets/EyeSlash.svg';
-import colors from '../Styles';
+import { colors } from '../Styles';
 
 interface BackButtonProps {
     style?: ViewStyle;
