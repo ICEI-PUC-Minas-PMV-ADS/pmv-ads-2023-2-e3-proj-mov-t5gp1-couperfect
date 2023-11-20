@@ -4,7 +4,7 @@ A art que representa o jogo.
 ![Splash art](imagens_design/Splash_art.png)
 
 ## Início
-A tela de início permite que o usuário entre, registre-se, faça o tutorial ou saia.
+A tela de início permite que o usuário entre, registre-se ou saia.
 
 ![Início](imagens_design/Inicio.png)
 
@@ -19,7 +19,7 @@ Na tela de realizar login é possível preencher os campos de email do usuário 
 ![Entrar](imagens_design/Entrar.png)
 
 ## Home
-A home, permite que o usuário Crie ou Busque salas, veja o tutorial de jogo ou saia da conta.
+A home, permite que o usuário Crie ou Busque salas ou saia da conta.
 
 ![Home logado](imagens_design/Home.png)
 
