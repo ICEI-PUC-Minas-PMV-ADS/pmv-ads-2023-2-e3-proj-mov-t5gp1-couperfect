@@ -4,6 +4,7 @@ using CouperfectServer.Application.Behaviours.RequestValidation;
 using CouperfectServer.Application.Services;
 using CouperfectServer.Application.UseCases.GameRooms;
 using CouperfectServer.Application.UseCases.GameRooms.Join;
+using CouperfectServer.Application.UseCases.GameRooms.Leave;
 using CouperfectServer.Domain.Extensions.Serialization;
 using FluentResults;
 using FluentValidation;
@@ -19,8 +20,10 @@ public static class DependencyInjection
         {
             setup.ErrorFactory = (message) => new ApplicationError(message);
         });
+
         // TODO: Search for json maps in assembly
-        PolymorphicTypeResolver.MapJson<GameRoomHubRequest>(cfg => cfg.AddChild<JoinGameRoomHubRequest>());
+        PolymorphicTypeResolver.MapJson<GameRoomHubRequestBase>(cfg => cfg.AddChild<LeaveGameRoomHubRequest>().AddChild<JoinGameRoomHubRequest>());
+        PolymorphicTypeResolver.MapJson<GameRoomHubResponse>(cfg => cfg.AddChild<LeaveGameRoomHubResponse>().AddChild<JoinGameRoomHubResponse>());
     }
 
     private static readonly Type _thisType = typeof(DependencyInjection);

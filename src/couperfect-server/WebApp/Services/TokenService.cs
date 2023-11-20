@@ -18,7 +18,12 @@ public partial class TokenService : ITokenService
 
     public string GetToken(Player user)
     {
-        var claims = new Claim[] { new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()) };
+        var claims = new HashSet<Claim> { 
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+        };
+
+        if (user.CurrentRoom is not null)
+            claims.Add(new Claim(ClaimTypes.GroupSid, user.CurrentRoom!.ToString()!));
 
         var tokenHandler = new JwtSecurityTokenHandler();
 

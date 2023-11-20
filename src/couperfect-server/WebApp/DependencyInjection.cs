@@ -61,12 +61,8 @@ public static class DependencyInjection
                 }
             );
         });
-        var key = Encoding.UTF8.GetBytes("ChaveAleatoriaCouperfect");
 
-        builder.Services.Configure<TokenService.Options>(opt => opt.TokenKey = key);
-        builder.Services.AddScoped<ITokenService, TokenService>();
-        builder.Services.AddScoped<RequestInfoService>();
-        builder.Services.AddScoped(sp => sp.GetRequiredService<RequestInfoService>() as IRequestInfoService);
+        var key = Encoding.UTF8.GetBytes("ChaveAleatoriaCouperfect");
         builder.Services.AddAuthentication(x =>
         {
             x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -101,10 +97,17 @@ public static class DependencyInjection
         });
         builder.Services.AddAuthorization();
 
+        builder.Services.AddHttpContextAccessor();
+        builder.Services.AddScoped<ITokenService, TokenService>();
+        builder.Services.AddScoped<RequestInfoService>();
+        builder.Services.Configure<TokenService.Options>(opt => opt.TokenKey = key);
+        builder.Services.AddScoped(sp => sp.GetRequiredService<RequestInfoService>() as IRequestInfoService);
+
+        builder.Services.AddScoped<IGameRoomHubService, GameRoomHubService>();
         builder.Services.AddSignalR();
+
         builder.Services.AddCouperfectDb();
         builder.Services.AddCouperfectApp();
-        builder.Services.AddHttpContextAccessor();
         builder.Services.AddCouperfectSerialization();
 
         return Task.CompletedTask;
@@ -136,5 +139,24 @@ public static class DependencyInjection
         var context = services.GetRequiredService<CouperfectDbContext>();
 
         await context.Database.EnsureCreatedAsync();
+
+        if (!context.Players.Any())
+        {
+            var cryptoService = services.GetRequiredService<ICryptographyService>();
+            var dateTimeService = services.GetRequiredService<IDateTimeService>();
+            var (passwordHash, salt) = cryptoService.GenerateSaltedSHA512Hash("Coup@123");
+
+            await context.Players.AddAsync(
+                new()
+                {
+                    Email = "couplayer@couperfect.com",
+                    Name = "CouPlayer",
+                    PasswordHash = passwordHash,
+                    PasswordSalt = salt,
+                    CreatedAt = dateTimeService.Now
+                });
+
+            await context.SaveChangesAsync();
+        }
     }
 }

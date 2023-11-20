@@ -13,5 +13,7 @@ public class PlayerMapping : IEntityTypeConfiguration<Player>
         builder.Property(x => x.PasswordSalt);
         builder.Property(x => x.PasswordHash);
         builder.Property(x => x.Email);
+        builder.Property(x => x.CurrentRoom);
+        builder.Property(x => x.JoinedRoomAt);
     }
 }

@@ -20,11 +20,16 @@ public class PlayerRepository : IPlayerRepository
 
     public Task<Player?> Find(string email, CancellationToken cancellationToken = default)
     {
-        return couperfectDbContext.Players.FirstOrDefaultAsync(a => a.Email == email, cancellationToken);
+        return couperfectDbContext.Players.AsNoTracking().FirstOrDefaultAsync(a => a.Email == email, cancellationToken);
     }
 
     public async Task<Player?> Find(int id, CancellationToken cancellationToken = default)
     {
-        return await couperfectDbContext.Players.FindAsync(new object[] { id }, cancellationToken: cancellationToken);
+        return await couperfectDbContext.Players.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id, cancellationToken: cancellationToken);
+    }
+
+    public void Update(Player player)
+    { 
+        couperfectDbContext.Update(player);
     }
 }

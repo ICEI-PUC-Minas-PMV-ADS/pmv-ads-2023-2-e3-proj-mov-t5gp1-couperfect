@@ -1,5 +1,4 @@
-﻿using CouperfectServer.Application.Extensions.FluentResultsExtensions;
-using FluentResults;
+﻿using FluentResults;
 using FluentValidation;
 using MediatR;
 
