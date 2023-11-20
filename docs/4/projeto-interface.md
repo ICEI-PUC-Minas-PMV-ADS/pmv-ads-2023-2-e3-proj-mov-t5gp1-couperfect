@@ -22,3 +22,13 @@ Na tela de realizar login é possível preencher os campos de email do usuário 
 A home, permite que o usuário Crie ou Busque salas, veja o tutorial de jogo ou saia da conta.
 
 ![Home logado](imagens_design/Home.png)
+
+## Criar Sala
+Na tela de criar sala, é possível dar nome a uma sala e opcionalmente uma senha para poder criar um grupo
+
+![Criar Sala](imagens_design/Criar_sala.png)
+
+## Buscar Sala
+Na tela de buscar sala, é possível encontrar salas já criadas para poder participar do jogo em grupo
+
+![Buscar Sala](imagens_design/Buscar_sala.png)
