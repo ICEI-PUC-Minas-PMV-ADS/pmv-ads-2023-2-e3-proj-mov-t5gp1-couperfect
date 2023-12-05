@@ -1,0 +1,80 @@
+{
+    "players": [
+      {
+        "id": 1,
+        "createdAt": "2023-12-04T00:00:00Z",
+        "modifiedAt": "2023-12-04T00:00:00Z",
+        "email": "admin@email.com",
+        "name": "Admin",
+        "passwordHash": [],
+        "passwordSalt": [],
+        "currentRoom": "3f2504e0-4f89-11d3-9a0c-0305e82c3301",
+        "joinedRoomAt": "2023-12-04T00:00:00Z"
+      },
+      {
+        "id": 2,
+        "createdAt": "2023-12-04T00:00:00Z",
+        "modifiedAt": "2023-12-04T00:00:00Z",
+        "email": "jogador2@email.com",
+        "name": "Jogador 2",
+        "passwordHash": [],
+        "passwordSalt": [],
+        "currentRoom": "3f2504e0-4f89-11d3-9a0c-0305e82c3301",
+        "joinedRoomAt": null
+      },
+      {
+        "id": 3,
+        "createdAt": "2023-12-04T00:00:00Z",
+        "modifiedAt": "2023-12-04T00:00:00Z",
+        "email": "jogador3@email.com",
+        "name": "Jogador 3",
+        "passwordHash": [],
+        "passwordSalt": [],
+        "currentRoom": "3f2504e0-4f89-11d3-9a0c-0305e82c3301",
+        "joinedRoomAt": null
+      },
+      {
+        "id": 4,
+        "createdAt": "2023-12-04T00:00:00Z",
+        "modifiedAt": "2023-12-04T00:00:00Z",
+        "email": "jogador4@email.com",
+        "name": "Jogador 4",
+        "passwordHash": [],
+        "passwordSalt": [],
+        "currentRoom": "3f2504e0-4f89-11d3-9a0c-0305e82c3301",
+        "joinedRoomAt": null
+      },
+      {
+        "id": 5,
+        "createdAt": "2023-12-04T00:00:00Z",
+        "modifiedAt": "2023-12-04T00:00:00Z",
+        "email": "jogador5@email.com",
+        "name": "Jogador 5",
+        "passwordHash": [],
+        "passwordSalt": [],
+        "currentRoom": null,
+        "joinedRoomAt": null
+      }
+    ],
+    "gameRooms": [
+      {
+        "guid": "3f2504e0-4f89-11d3-9a0c-0305e82c3301",
+        "isInviteOnly": false,
+        "name": "Sala pública",
+        "adminId": 1,
+        "players": [
+          {
+            "playerId": 1,
+            "connectionId": "abc123"
+          }
+        ]
+      }
+    ],
+    "gameInvites": [
+      {
+        "id": 1,
+        "wasUsed": false,
+        "room": {}
+      }
+    ]
+  }

@@ -4,14 +4,31 @@ import CoupButton from '../Components/CoupButton';
 import InputField from '../Components/InputField';
 import ModalLogo from '../Components/ModalLogo';
 import PasswordField from '../Components/PasswordField';
+import axios from 'axios';
 
 const CreateRoom: React.FC = () => {
   const [roomName, setRoomName] = useState('');
   const [roomPassword, setRoomPassword] = useState('');
 
-  function handleCreateRoom() {
-    console.log(`criando a sala ${roomName}`);
-    if (roomPassword !== '') console.log(`com o a senha ${roomPassword}`)
+  async function handleCreateRoom() {
+    const handleCreateRoom = async () => {
+      try {
+        const response = await axios.post('http://localhost:3000/gameRooms', {
+          name: roomName,
+          password: roomPassword,
+          players: []
+        });
+    
+        if (response.status === 201) {
+          console.log(`Sala ${roomName} criada com sucesso!`);
+          if (roomPassword !== '') console.log(`com a senha ${roomPassword}`);
+        } else {
+          console.error('Erro ao criar a sala:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Erro ao criar a sala:', error);
+      }
+    }
   }
 
   return (
