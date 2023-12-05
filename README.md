@@ -10,7 +10,7 @@ O projeto em desenvolvimento é uma versão online do popular jogo de cartas est
 
 ## Integrantes
 
-* Adeilton Farias Rodrigues Junior
+* Adeilton Rodrigues Farias Junior
 * Carlos Alberto Mendonça Vasconselos
 * Gustavo Henrique de Jesus Almeida
 * Luiz Eduardo de Jesus Santana
