@@ -5,14 +5,31 @@ import InputField from '../Components/InputField';
 import ModalLogo from '../Components/ModalLogo';
 import PasswordField from '../Components/PasswordField';
 import AuthContext from '../Context/auth';
+import axios from 'axios';
 
 const SignInPage: React.FC = () => {
+
   const {signIn} = useContext(AuthContext);
-
-  const handleSignIn = async () => await signIn({ email, password });
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleSignIn = async () => {
+    try {
+      const response = await axios.post('http://localhost:3000/players/login', {
+        email,
+        password
+      });
+  
+      if (response.status === 200) {
+        console.log('Login bem-sucedido!');
+        // Faça algo com os dados de resposta (por exemplo, armazene o token de acesso)
+      } else {
+        console.error('Erro ao fazer login:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Erro ao fazer login:', error);
+    }
+  }
 
   return (
     <Background>
